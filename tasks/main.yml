@@ -1,9 +1,7 @@
 ---
-- name: ensure apt can deal with https
-  apt: name=apt-transport-https state=present
 - name: add the docker repository
   apt_repository: repo='deb https://get.docker.io/ubuntu docker main' state=present
-- name: update the system
-  apt: update_cache=yes upgrade=yes
+- name: update the apt cache
+  apt: update_cache=yes
 - name: install docker
   apt: name=lxc-docker state=latest
